@@ -1,0 +1,57 @@
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { CubLayoutContainer, CubLayoutContent, CubSidebarContent, CubLayoutPanel } from 'cub-lib-view-rootng/component/layout';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HeaderComponent } from "../header/header";
+import { FooterComponent } from '../footer/footer';
+
+@Component({
+  selector: 'app-main-layout',
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    CubLayoutContainer,
+    CubLayoutContent,
+    CubSidebarContent,
+    CubLayoutPanel,
+    HeaderComponent,
+    FooterComponent
+],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './main.html',
+  styleUrl: './main.scss'
+})
+export class MainLayoutComponent {
+
+  leftOpened: boolean = false;
+  sidebar_open: boolean = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.updateSidebarOpen();
+    window.addEventListener('resize', this.updateSidebarOpen.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.updateSidebarOpen.bind(this));
+  }
+
+  updateSidebarOpen(): void {
+    const width = document.documentElement.clientWidth;
+    this.sidebar_open = width > 1024;
+  }
+
+  leftToggle(opened?: boolean): void {
+    console.log('toggle')
+    if (opened === undefined) {
+      this.leftOpened = !this.leftOpened;
+    } else {
+      this.leftOpened = opened;
+    }
+  }
+
+
+}

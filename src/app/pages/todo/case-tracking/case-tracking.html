@@ -1,0 +1,27 @@
+<cub-table [value]="userList">
+    <ng-template cubTemplate="header">
+      <tr>
+        <th>標題</th>
+        <th>姓名</th>
+        <th>日期</th>
+        <th class="cub-column-amount">金額</th>
+        <th class="cub-column-actions">動作</th>
+      </tr>
+    </ng-template>
+    <ng-template cubTemplate="body" let-user>
+      <tr>
+        <td>{{ user.title }}</td>
+        <td>{{ user.userName }}</td>
+        <td>{{ user.date }}</td>
+        <td class="cub-column-amount">{{ user.amount | number: "1.0-0" }}</td>
+        <td class="cub-column-actions">
+          <button cub-button type="button" appearance="text">編輯</button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template cubTemplate="emptymessage">
+      <tr class="cub-table-row-null">
+        <td [attr.colspan]="8">無資料</td>
+      </tr>
+    </ng-template>
+  </cub-table>

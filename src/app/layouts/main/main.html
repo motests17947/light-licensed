@@ -1,0 +1,29 @@
+<cub-layout-container>
+  <app-header cubLayoutHeader />
+
+  <cub-layout-panel
+    cubLayoutPanel
+    position="start"
+    [autoFocus]="false"
+    [opened]="sidebar_open"
+    (openedChange)="leftToggle($event)"
+    [mode]="'side'"
+  >
+    <cub-sidebar-content>
+      <div style="width: 240px">
+        <ul class="sidebar-menu">
+          <li><a routerLink="/todo" routerLinkActive="active">代辦事項</a></li>
+          <li><a routerLink="/search" routerLinkActive="active">連線查詢</a></li>
+          <li><a routerLink="/create" routerLinkActive="active">新增連線</a></li>
+          <li><a routerLink="/switch" routerLinkActive="active">連線開關</a></li>
+        </ul>
+      </div>
+    </cub-sidebar-content>
+  </cub-layout-panel>
+
+  <cub-layout-content>
+    <router-outlet />
+  </cub-layout-content>
+
+  <app-footer cubLayoutFooter></app-footer>
+</cub-layout-container>

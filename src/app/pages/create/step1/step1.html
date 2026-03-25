@@ -1,0 +1,92 @@
+<cub-card>
+  <cub-card-header>申請資料</cub-card-header>
+  <cub-card-content>
+    <div class="row">
+      <div class="col">
+        <cub-label [required]="true">申請單號</cub-label>
+        <p>123</p>
+      </div>
+      <div class="col">
+        <cub-label [required]="true">申請人</cub-label>
+        <p>123</p>
+      </div>
+      <div class="col">
+        <cub-label [required]="true">申請單位</cub-label>
+        <p>123</p>
+      </div>
+    </div>
+  </cub-card-content>
+</cub-card>
+
+<cub-card class="mt-20">
+  <cub-card-header>連線內容</cub-card-header>
+  <cub-card-content>
+    <cub-form-field>
+      <div class="row mb-20">
+        <div class="col">
+          <cub-label [required]="true">選擇連線類型</cub-label>
+          <cub-select placeholder="請選擇">
+            @for (option of options; track option) {
+            <cub-option [value]="option.value" [disabled]="option.disabled">{{ option.label }}</cub-option>
+            }
+          </cub-select>
+        </div>
+        <div class="col">
+          <cub-label [required]="true">連線名稱</cub-label>
+          <input cubInput placeholder="請輸入" [formControl]="formFieldFormControl" />
+        </div>
+      </div>
+      <div class="row mb-20">
+        <div class="col">
+          <cub-label [required]="true">Server IP</cub-label>
+          <input cubInput placeholder="請輸入" [formControl]="formFieldFormControl" />
+        </div>
+        <div class="col">
+          <cub-label [required]="true">Server  Port</cub-label>
+          <input cubInput placeholder="請輸入" [formControl]="formFieldFormControl" />
+        </div>
+      </div>
+      <div class="row mb-20">
+        <div class="col">
+          <cub-label [required]="true">Client IP</cub-label>
+          <input cubInput placeholder="請輸入" [formControl]="formFieldFormControl" />
+        </div>
+        <div class="col">
+          <cub-label [required]="true">Client Port</cub-label>
+          <input cubInput placeholder="請輸入" [formControl]="formFieldFormControl" />
+        </div>
+      </div>
+      <div class="row mb-20">
+        <div class="col">
+          <cub-label [required]="true">Keepalive</cub-label>
+          <cub-select placeholder="請選擇">
+            @for (option of options; track option) {
+            <cub-option [value]="option.value" [disabled]="option.disabled">{{ option.label }}</cub-option>
+            }
+          </cub-select>
+        </div>
+        <div class="col">
+          <cub-label [required]="true">選擇中心</cub-label>
+          <cub-radio-group>
+            <cub-radio value="one" name="radioName">One</cub-radio>
+            <cub-radio value="two" name="radioName">Two</cub-radio>
+            <cub-radio value="three" name="radioName">Three</cub-radio>
+          </cub-radio-group>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <cub-label [required]="true">Memo</cub-label>
+          <input cubInput placeholder="請輸入" [formControl]="formFieldFormControl" />
+        </div>
+      </div>
+    </cub-form-field>
+  </cub-card-content>
+</cub-card>
+
+<div class="mt-20 w-100 d-inline-flex justify-content-center">
+  <button cub-button class="mr-20" type="button" color="brand" appearance="filled" size="medium">
+    上一步
+  </button>
+  <button cub-button type="button" color="brand" appearance="filled" size="medium">下一步</button>
+</div>

@@ -1,0 +1,61 @@
+.connections-page {
+  padding: 1rem;
+}
+
+.connections-page h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.connections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.connection-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #dc3545;
+  transition: all 0.3s ease;
+}
+
+.connection-card.connected {
+  border-left-color: #28a745;
+}
+
+.connection-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.connection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.connection-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #dc3545;
+  color: white;
+}
+
+.status.connected {
+  background: #28a745;
+}
+
+.connection-details p {
+  margin: 0.5rem 0;
+  color: #666;
+}

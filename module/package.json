@@ -1,0 +1,303 @@
+{
+  "name": "cub-lib-view-rootng",
+  "version": "2.0.5",
+  "description": "這是由 UXD 小組所建立的 Angular 共用元件庫 RootNG",
+  "main": "src/public-api.ts",
+  "styles": "src/styles/cub-lib-view-rootng.scss",
+  "sass": "src/styles/cub-lib-view-rootng.scss",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "cub-lib-view-utilities": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "moment": "^2.29.4"
+  },
+  "author": "UXD Team",
+  "license": "MIT",
+  "module": "fesm2022/cub-lib-view-rootng.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng.mjs"
+    },
+    "./component": {
+      "types": "./component/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component.mjs"
+    },
+    "./cdk": {
+      "types": "./cdk/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk.mjs"
+    },
+    "./component/accordion": {
+      "types": "./component/accordion/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-accordion.mjs"
+    },
+    "./component/alert": {
+      "types": "./component/alert/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-alert.mjs"
+    },
+    "./component/autocomplete": {
+      "types": "./component/autocomplete/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-autocomplete.mjs"
+    },
+    "./component/badge": {
+      "types": "./component/badge/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-badge.mjs"
+    },
+    "./component/breadcrumb": {
+      "types": "./component/breadcrumb/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-breadcrumb.mjs"
+    },
+    "./component/button": {
+      "types": "./component/button/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-button.mjs"
+    },
+    "./component/card": {
+      "types": "./component/card/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-card.mjs"
+    },
+    "./component/checkbox": {
+      "types": "./component/checkbox/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-checkbox.mjs"
+    },
+    "./component/chip": {
+      "types": "./component/chip/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-chip.mjs"
+    },
+    "./component/collapsible-menu": {
+      "types": "./component/collapsible-menu/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-collapsible-menu.mjs"
+    },
+    "./component/common": {
+      "types": "./component/common/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-common.mjs"
+    },
+    "./component/content-field": {
+      "types": "./component/content-field/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-content-field.mjs"
+    },
+    "./component/datetimepicker": {
+      "types": "./component/datetimepicker/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-datetimepicker.mjs"
+    },
+    "./component/dialog": {
+      "types": "./component/dialog/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-dialog.mjs"
+    },
+    "./component/drawer": {
+      "types": "./component/drawer/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-drawer.mjs"
+    },
+    "./component/drop-down": {
+      "types": "./component/drop-down/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-drop-down.mjs"
+    },
+    "./component/form-field": {
+      "types": "./component/form-field/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-form-field.mjs"
+    },
+    "./component/input": {
+      "types": "./component/input/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-input.mjs"
+    },
+    "./component/input-group": {
+      "types": "./component/input-group/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-input-group.mjs"
+    },
+    "./component/label": {
+      "types": "./component/label/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-label.mjs"
+    },
+    "./component/layout": {
+      "types": "./component/layout/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-layout.mjs"
+    },
+    "./component/loading": {
+      "types": "./component/loading/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-loading.mjs"
+    },
+    "./component/mask": {
+      "types": "./component/mask/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-mask.mjs"
+    },
+    "./component/menu": {
+      "types": "./component/menu/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-menu.mjs"
+    },
+    "./component/nav-menu": {
+      "types": "./component/nav-menu/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-nav-menu.mjs"
+    },
+    "./component/option": {
+      "types": "./component/option/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-option.mjs"
+    },
+    "./component/paginator": {
+      "types": "./component/paginator/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-paginator.mjs"
+    },
+    "./component/notification": {
+      "types": "./component/notification/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-notification.mjs"
+    },
+    "./component/picklist": {
+      "types": "./component/picklist/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-picklist.mjs"
+    },
+    "./component/popover": {
+      "types": "./component/popover/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-popover.mjs"
+    },
+    "./component/radio": {
+      "types": "./component/radio/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-radio.mjs"
+    },
+    "./component/resource-item": {
+      "types": "./component/resource-item/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-resource-item.mjs"
+    },
+    "./component/select": {
+      "types": "./component/select/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-select.mjs"
+    },
+    "./component/show-more": {
+      "types": "./component/show-more/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-show-more.mjs"
+    },
+    "./component/slider": {
+      "types": "./component/slider/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-slider.mjs"
+    },
+    "./component/stepper": {
+      "types": "./component/stepper/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-stepper.mjs"
+    },
+    "./component/switch": {
+      "types": "./component/switch/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-switch.mjs"
+    },
+    "./component/tab": {
+      "types": "./component/tab/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-tab.mjs"
+    },
+    "./component/table": {
+      "types": "./component/table/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-table.mjs"
+    },
+    "./component/tag": {
+      "types": "./component/tag/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-tag.mjs"
+    },
+    "./component/timeline": {
+      "types": "./component/timeline/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-timeline.mjs"
+    },
+    "./component/toast": {
+      "types": "./component/toast/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-toast.mjs"
+    },
+    "./component/toggle-icon": {
+      "types": "./component/toggle-icon/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-toggle-icon.mjs"
+    },
+    "./component/toggle-mode": {
+      "types": "./component/toggle-mode/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-toggle-mode.mjs"
+    },
+    "./component/tooltip": {
+      "types": "./component/tooltip/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-tooltip.mjs"
+    },
+    "./component/tree": {
+      "types": "./component/tree/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-tree.mjs"
+    },
+    "./component/watermark": {
+      "types": "./component/watermark/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-watermark.mjs"
+    },
+    "./component/upload": {
+      "types": "./component/upload/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-component-upload.mjs"
+    },
+    "./cdk/a11y": {
+      "types": "./cdk/a11y/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-a11y.mjs"
+    },
+    "./cdk/accordion": {
+      "types": "./cdk/accordion/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-accordion.mjs"
+    },
+    "./cdk/bidi": {
+      "types": "./cdk/bidi/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-bidi.mjs"
+    },
+    "./cdk/clipboard": {
+      "types": "./cdk/clipboard/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-clipboard.mjs"
+    },
+    "./cdk/collections": {
+      "types": "./cdk/collections/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-collections.mjs"
+    },
+    "./cdk/dialog": {
+      "types": "./cdk/dialog/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-dialog.mjs"
+    },
+    "./cdk/coercion": {
+      "types": "./cdk/coercion/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-coercion.mjs"
+    },
+    "./cdk/drag-drop": {
+      "types": "./cdk/drag-drop/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-drag-drop.mjs"
+    },
+    "./cdk/keycodes": {
+      "types": "./cdk/keycodes/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-keycodes.mjs"
+    },
+    "./cdk/layout": {
+      "types": "./cdk/layout/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-layout.mjs"
+    },
+    "./cdk/observers": {
+      "types": "./cdk/observers/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-observers.mjs"
+    },
+    "./cdk/overlay": {
+      "types": "./cdk/overlay/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-overlay.mjs"
+    },
+    "./cdk/platform": {
+      "types": "./cdk/platform/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-platform.mjs"
+    },
+    "./cdk/portal": {
+      "types": "./cdk/portal/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-portal.mjs"
+    },
+    "./cdk/scrolling": {
+      "types": "./cdk/scrolling/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-scrolling.mjs"
+    },
+    "./cdk/stepper": {
+      "types": "./cdk/stepper/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-stepper.mjs"
+    },
+    "./cdk/text-field": {
+      "types": "./cdk/text-field/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-text-field.mjs"
+    },
+    "./cdk/tree": {
+      "types": "./cdk/tree/index.d.ts",
+      "default": "./fesm2022/cub-lib-view-rootng-cdk-tree.mjs"
+    }
+  },
+  "sideEffects": false
+}

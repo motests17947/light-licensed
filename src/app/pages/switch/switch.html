@@ -1,0 +1,7 @@
+<cub-card contentColorScheme="dark">
+  <cub-select placeholder="請選擇">
+  @for (option of options; track option) {
+  <cub-option [value]="option.value" [disabled]="option.disabled">{{ option.label }}</cub-option>
+  }
+</cub-select>
+</cub-card>

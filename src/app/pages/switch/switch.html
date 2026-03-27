@@ -1,7 +1,121 @@
-<cub-card contentColorScheme="dark">
-  <cub-select placeholder="請選擇">
-  @for (option of options; track option) {
-  <cub-option [value]="option.value" [disabled]="option.disabled">{{ option.label }}</cub-option>
-  }
-</cub-select>
-</cub-card>
+<div class="switch-page">
+
+  <!-- Page title -->
+  <div class="page-title">連線管理</div>
+
+  <!-- Line tabs: 所有連線 | 組織管理 -->
+  <cub-tab-group appearance="line" [(selectedIndex)]="activeTabIndex">
+
+    <!-- Tab 1: 所有連線 -->
+    <cub-tab label="所有連線">
+
+      <div class="tab-content">
+        <cub-card class="filter-card">
+          <cub-card-content>
+
+            <div class="filter-row">
+
+              <!-- 選擇連線類型 -->
+              <div class="filter-field">
+                <label class="filter-label">選擇連線類型</label>
+                <cub-select [(ngModel)]="selectedConnectionType" placeholder="請選擇">
+                  @for (option of connectionTypeOptions; track option.value) {
+                    <cub-option [value]="option.value">{{ option.label }}</cub-option>
+                  }
+                </cub-select>
+              </div>
+
+              <!-- 選擇中心 -->
+              <div class="filter-field">
+                <label class="filter-label">選擇中心</label>
+                <cub-radio-group [(ngModel)]="selectedCenter" orientation="horizontal">
+                  @for (option of centerOptions; track option.value) {
+                    <cub-radio [value]="option.value">{{ option.label }}</cub-radio>
+                  }
+                </cub-radio-group>
+              </div>
+
+            </div>
+
+            <!-- 選擇叢集 -->
+            <div class="filter-field">
+              <label class="filter-label">選擇叢集</label>
+              <div class="checkbox-group">
+                @for (option of clusterOptions; track option.value) {
+                  <cub-checkbox [(ngModel)]="option.checked">{{ option.label }}</cub-checkbox>
+                }
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="filter-actions">
+              <button cub-button type="button" color="brand" appearance="outline" (click)="onClear()">清空</button>
+              <button cub-button type="button" color="brand" appearance="filled" (click)="onSearch()">查詢</button>
+            </div>
+
+          </cub-card-content>
+        </cub-card>
+      </div>
+
+    </cub-tab>
+
+    <!-- Tab 2: 組織管理 -->
+    <cub-tab label="組織管理">
+
+      <div class="tab-content">
+
+        <!-- Filled sub-tabs: NCCC | VISA | MasterCard | CardPool -->
+        <cub-tab-group appearance="filled" [(selectedIndex)]="activeOrgTabIndex">
+
+          @for (org of orgTabs; track org) {
+            <cub-tab [label]="org">
+              <div class="org-table-wrapper">
+
+                <cub-table [value]="orgTableData">
+                  <ng-template cubTemplate="header">
+                    <tr>
+                      <th>組織名稱</th>
+                      <th>連線數量</th>
+                      <th>中心分佈</th>
+                      <th>連線狀態</th>
+                      <th>最後操作</th>
+                      <th class="cub-column-actions">動作</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template cubTemplate="body" let-row>
+                    <tr>
+                      <td>{{ row.orgName }}</td>
+                      <td>{{ row.connectionCount }}</td>
+                      <td>{{ row.centers }}</td>
+                      <td>
+                        <span class="status-tag" [class.status-green]="row.status === 'SIGN ON'">
+                          ● {{ row.status }}
+                        </span>
+                      </td>
+                      <td>{{ row.lastOperator }}</td>
+                      <td class="cub-column-actions">
+                        <button cub-button type="button" color="brand" appearance="filled" size="small"
+                                (click)="onView(row)">查看</button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                  <ng-template cubTemplate="emptymessage">
+                    <tr class="cub-table-row-null">
+                      <td [attr.colspan]="6">無資料</td>
+                    </tr>
+                  </ng-template>
+                </cub-table>
+
+              </div>
+            </cub-tab>
+          }
+
+        </cub-tab-group>
+
+      </div>
+
+    </cub-tab>
+
+  </cub-tab-group>
+
+</div>

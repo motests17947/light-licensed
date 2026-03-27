@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CubTabModule } from 'cub-lib-view-rootng/component/tab';
 import { CubButton, CubButtonModule, CubTable, CubTableModule } from 'cub-lib-view-rootng';
+import { SidebarService } from '../../../services/sidebar.service';
 
 @Component({
   selector: 'app-case-tracking',
@@ -12,7 +13,7 @@ import { CubButton, CubButtonModule, CubTable, CubTableModule } from 'cub-lib-vi
 })
 export class AppCaseTrackingComponent {
 
-  constructor() { }
+  constructor(private sidebarService: SidebarService) { }
 
   userList: any[] = [
     {
@@ -37,4 +38,9 @@ export class AppCaseTrackingComponent {
       amount: 10000000,
     },
   ];
+
+  onEdit(user: any): void {
+    console.log('編輯用户:', user);
+    this.sidebarService.openRightSidebar(user);
+  }
 }

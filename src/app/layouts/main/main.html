@@ -31,12 +31,150 @@
     [autoFocus]="false"
     [opened]="rightSidebarOpen"
     (openedChange)="rightToggle($event)"
-    [mode]="'over'"
+    [mode]="'side'"
   >
     <cub-sidebar-content>
-      <div class="right-sidebar-content">
-        <h3>右側面板</h3>
-        <p>這是右側 Sidebar 內容</p>
+      <div class="edit-sidebar">
+
+        <!-- 頂部操作欄 -->
+        <div class="edit-sidebar-topbar">
+          <button class="cancel-btn" (click)="rightToggle(false)">
+            <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.54109 7.83325L11.1875 13.4797C11.3828 13.675 11.3828 13.9915 11.1875 14.1868C10.9923 14.3821 10.6757 14.3821 10.4804 14.1868L4.48043 8.18681C4.28517 7.99154 4.28517 7.67496 4.48043 7.4797L10.4804 1.4797C10.6757 1.28444 10.9923 1.28444 11.1875 1.4797C11.3828 1.67496 11.3828 1.99154 11.1875 2.18681L5.54109 7.83325Z" fill="#999999"/>
+            </svg>
+            <span>取消</span>
+          </button>
+          <div class="topbar-divider"></div>
+          <span class="topbar-title">編輯開關</span>
+          <button class="submit-btn">送出</button>
+        </div>
+
+        <!-- 主要內容 -->
+        <div class="edit-sidebar-body">
+
+          <!-- 組織資訊 -->
+          <div class="org-section">
+            <div class="org-name">組織名稱：NCCC</div>
+            <div class="org-status-row">
+              <span class="org-status-label">目前狀態：</span>
+              <span class="status-tag status-green">● SIGN ON</span>
+            </div>
+            <div class="toggle-switch-on">
+              <svg width="48" height="28" viewBox="0 0 48 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="28" rx="14" fill="#00994E"/>
+                <circle cx="34" cy="14" r="9.5" fill="white" stroke="#00994E"/>
+                <path d="M29.5 15L32.6667 18L39.5 10" stroke="#00994E" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- 連線清單 -->
+          <div class="connections-list">
+
+            <div class="accordion-item">
+              <div class="accordion-header" (click)="toggleConnection(0)">
+                <svg class="chevron-icon" [class.chevron-up]="expandedConnection === 0" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M10.9991 13.5209C10.8127 13.5051 10.5501 13.3775 10.4766 13.3101L6.45244 9.28589C6.28 9.1 6.28 8.8 6.45244 8.64423C6.63 8.47 6.93 8.47 7.0941 8.64423L10.9899 12.5401L14.8858 8.64423C15.07 8.47 15.37 8.47 15.5274 8.64423C15.71 8.82 15.71 9.12 15.5274 9.28589L11.5033 13.3101C11.33 13.49 11.08 13.53 10.9808 13.5209H10.9991Z" fill="#292929"/>
+                </svg>
+                <span class="accordion-title">連線 1：發卡授權</span>
+                <span class="status-tag status-green">正常</span>
+              </div>
+              @if (expandedConnection === 0) {
+                <div class="accordion-body">
+                  <div class="conn-detail-label">地點：內湖</div>
+                  <div class="conn-detail-row">
+                    <span class="conn-label">Server：</span>
+                    <span class="ip-tag">192.168.10.36</span>
+                    <span class="conn-sep">：</span>
+                    <span class="ip-tag">11001</span>
+                  </div>
+                  <div class="conn-detail-row">
+                    <span class="conn-label">Client：</span>
+                    <span class="ip-tag">88.21.117.129</span>
+                    <span class="conn-sep">：</span>
+                    <span class="ip-tag">11002</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" (click)="toggleConnection(1)">
+                <svg class="chevron-icon" [class.chevron-up]="expandedConnection === 1" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M10.9991 13.5209C10.8127 13.5051 10.5501 13.3775 10.4766 13.3101L6.45244 9.28589C6.28 9.1 6.28 8.8 6.45244 8.64423C6.63 8.47 6.93 8.47 7.0941 8.64423L10.9899 12.5401L14.8858 8.64423C15.07 8.47 15.37 8.47 15.5274 8.64423C15.71 8.82 15.71 9.12 15.5274 9.28589L11.5033 13.3101C11.33 13.49 11.08 13.53 10.9808 13.5209H10.9991Z" fill="#292929"/>
+                </svg>
+                <span class="accordion-title">連線 2：帳務清算</span>
+                <span class="status-tag status-red">斷連</span>
+              </div>
+              @if (expandedConnection === 1) {
+                <div class="accordion-body"></div>
+              }
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" (click)="toggleConnection(2)">
+                <svg class="chevron-icon" [class.chevron-up]="expandedConnection === 2" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M10.9991 13.5209C10.8127 13.5051 10.5501 13.3775 10.4766 13.3101L6.45244 9.28589C6.28 9.1 6.28 8.8 6.45244 8.64423C6.63 8.47 6.93 8.47 7.0941 8.64423L10.9899 12.5401L14.8858 8.64423C15.07 8.47 15.37 8.47 15.5274 8.64423C15.71 8.82 15.71 9.12 15.5274 9.28589L11.5033 13.3101C11.33 13.49 11.08 13.53 10.9808 13.5209H10.9991Z" fill="#292929"/>
+                </svg>
+                <span class="accordion-title">連線 3：...</span>
+                <span class="status-tag status-green">正常</span>
+              </div>
+              @if (expandedConnection === 2) {
+                <div class="accordion-body"></div>
+              }
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" (click)="toggleConnection(3)">
+                <svg class="chevron-icon" [class.chevron-up]="expandedConnection === 3" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M10.9991 13.5209C10.8127 13.5051 10.5501 13.3775 10.4766 13.3101L6.45244 9.28589C6.28 9.1 6.28 8.8 6.45244 8.64423C6.63 8.47 6.93 8.47 7.0941 8.64423L10.9899 12.5401L14.8858 8.64423C15.07 8.47 15.37 8.47 15.5274 8.64423C15.71 8.82 15.71 9.12 15.5274 9.28589L11.5033 13.3101C11.33 13.49 11.08 13.53 10.9808 13.5209H10.9991Z" fill="#292929"/>
+                </svg>
+                <span class="accordion-title">連線 4：...</span>
+                <span class="status-tag status-green">正常</span>
+              </div>
+              @if (expandedConnection === 3) {
+                <div class="accordion-body"></div>
+              }
+            </div>
+
+          </div>
+
+          <!-- 傳遞流程 -->
+          <div class="delivery-section">
+            <div class="delivery-title">傳遞流程</div>
+            <div class="delivery-divider"></div>
+
+            <div class="stepper">
+              <div class="step-item">
+                <div class="step-track">
+                  <div class="step-icon active">1</div>
+                  <div class="step-line"></div>
+                </div>
+                <div class="step-content">
+                  <div class="step-header">
+                    <span class="status-tag status-green">承辦</span>
+                    <span class="step-person">ＯＯ部</span>
+                    <span class="step-person">王Ｏ言</span>
+                  </div>
+                  <textarea class="step-textarea" placeholder="這是一段步驟條副標題長度遇到寬度不夠就自動換行"></textarea>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-track">
+                  <div class="step-icon pending">2</div>
+                </div>
+                <div class="step-content">
+                  <div class="step-header">
+                    <span class="status-tag status-gray">待覆核</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </cub-sidebar-content>
   </cub-layout-panel>

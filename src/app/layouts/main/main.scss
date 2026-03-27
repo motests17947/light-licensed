@@ -224,7 +224,7 @@
     flex-shrink: 0;
     transition: transform 0.2s ease;
 
-    &.rotated {
+    &.chevron-up {
       transform: rotate(180deg);
     }
   }
@@ -252,6 +252,13 @@
 }
 
 .conn-label {
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.conn-sep {
   color: #000;
   font-size: 14px;
   font-weight: 700;

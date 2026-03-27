@@ -31,7 +31,7 @@
     [autoFocus]="false"
     [opened]="rightSidebarOpen"
     (openedChange)="rightToggle($event)"
-    [mode]="'side'"
+    [mode]="'over'"
   >
     <cub-sidebar-content>
       <app-edit-sidebar (closeSidebar)="rightToggle(false)" (submit)="onEditSubmit()"></app-edit-sidebar>

@@ -1,13 +1,31 @@
 <div class="todos-page">
-  <h2>代辦事項</h2>
-  <div class="todos-list">
-    <cub-tab-group>
-      <cub-tab label="案件追蹤">
-        <app-case-tracking/>
-      </cub-tab>
-      <cub-tab label="代辦事項">
-        <app-todo-list/>
-      </cub-tab>
-    </cub-tab-group>
+  <div class="page-header">
+    <span class="page-title-bar"></span>
+    <h2 class="page-title">待辦案件</h2>
   </div>
+
+  <div class="line-tabs-section">
+    <div class="line-tabs-nav">
+      <button
+        class="line-tab"
+        [class.line-tab--active]="activeMainTab === 'case-tracking'"
+        (click)="setMainTab('case-tracking')">
+        案件追蹤
+      </button>
+      <button
+        class="line-tab"
+        [class.line-tab--active]="activeMainTab === 'todo-list'"
+        (click)="setMainTab('todo-list')">
+        待辦事項
+      </button>
+    </div>
+    <div class="line-tabs-divider"></div>
+  </div>
+
+  @if (activeMainTab === 'case-tracking') {
+    <app-case-tracking />
+  }
+  @if (activeMainTab === 'todo-list') {
+    <app-todo-list />
+  }
 </div>

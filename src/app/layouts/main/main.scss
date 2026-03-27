@@ -43,6 +43,15 @@
   font-weight: 500;
 }
 
+/* Right sidebar panel z-index fix */
+::ng-deep .cub-layout-panel {
+  z-index: 9999 !important;
+}
+
+::ng-deep .cub-layout-backdrop {
+  z-index: 9998 !important;
+}
+
 .content-area {
   flex: 1;
   padding: 2rem;

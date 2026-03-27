@@ -5,6 +5,7 @@ import { CubLayoutContainer, CubLayoutContent, CubSidebarContent, CubLayoutPanel
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from "../header/header";
 import { FooterComponent } from '../footer/footer';
+import { EditSidebarComponent } from '../../components/edit-sidebar/edit-sidebar';
 import { SidebarService } from '../../services/sidebar.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,7 +23,8 @@ import { takeUntil } from 'rxjs/operators';
     CubSidebarContent,
     CubLayoutPanel,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditSidebarComponent
 ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './main.html',
@@ -34,7 +36,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   sidebar_open: boolean = false;
   rightSidebarOpen: boolean = false;
   selectedItem: any = null;
-  expandedConnection: number = 0;
   private destroy$ = new Subject<void>();
 
   constructor(private sidebarService: SidebarService) { }
@@ -83,8 +84,8 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     }
   }
 
-  toggleConnection(index: number): void {
-    this.expandedConnection = this.expandedConnection === index ? -1 : index;
+  onEditSubmit(): void {
+    console.log('編輯開關已送出');
   }
 
 }

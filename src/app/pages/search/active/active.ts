@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SidebarService } from '../../../services/sidebar.service';
 
 interface ConnectionResult {
   connectionId: string;
@@ -18,6 +19,7 @@ interface ConnectionResult {
   styleUrl: './active.scss'
 })
 export class SearchActiveComponent {
+  constructor(private sidebarService: SidebarService) {}
   selectedType = 'NCCC';
   selectedStatus = '';
 
@@ -44,7 +46,7 @@ export class SearchActiveComponent {
   }
 
   onView(item: ConnectionResult): void {
-    console.log('查看:', item);
+    this.sidebarService.openRightSidebar(item);
   }
 
   prevPage(): void {

@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CubLayoutContainer, CubLayoutContent, CubSidebarContent, CubLayoutPanel } from 'cub-lib-view-rootng/component/layout';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from "../header/header";
 import { FooterComponent } from '../footer/footer';
+import { SidebarService } from '../../services/sidebar.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-layout',
@@ -23,21 +26,37 @@ import { FooterComponent } from '../footer/footer';
   templateUrl: './main.html',
   styleUrl: './main.scss'
 })
-export class MainLayoutComponent {
+export class MainLayoutComponent implements OnInit, OnDestroy {
 
   leftOpened: boolean = false;
   sidebar_open: boolean = false;
   rightSidebarOpen: boolean = false;
+  selectedItem: any = null;
+  private destroy$ = new Subject<void>();
 
-  constructor() { }
+  constructor(private sidebarService: SidebarService) { }
 
   ngOnInit(): void {
     this.updateSidebarOpen();
     window.addEventListener('resize', this.updateSidebarOpen.bind(this));
+
+    this.sidebarService.rightSidebarOpen$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isOpen => {
+        this.rightSidebarOpen = isOpen;
+      });
+
+    this.sidebarService.selectedItem$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(item => {
+        this.selectedItem = item;
+      });
   }
 
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.updateSidebarOpen.bind(this));
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   updateSidebarOpen(): void {

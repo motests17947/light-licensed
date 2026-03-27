@@ -35,8 +35,29 @@
   >
     <cub-sidebar-content>
       <div class="right-sidebar-content">
-        <h3>右側面板</h3>
-        <p>這是右側 Sidebar 內容</p>
+        <h3>編輯詳情</h3>
+        @if (selectedItem) {
+          <div class="sidebar-item-details">
+            <div class="detail-row">
+              <label>標題：</label>
+              <span>{{ selectedItem.title }}</span>
+            </div>
+            <div class="detail-row">
+              <label>姓名：</label>
+              <span>{{ selectedItem.userName }}</span>
+            </div>
+            <div class="detail-row">
+              <label>日期：</label>
+              <span>{{ selectedItem.date }}</span>
+            </div>
+            <div class="detail-row">
+              <label>金額：</label>
+              <span>{{ selectedItem.amount | number: "1.0-0" }}</span>
+            </div>
+          </div>
+        } @else {
+          <p>請選擇一項進行編輯</p>
+        }
       </div>
     </cub-sidebar-content>
   </cub-layout-panel>

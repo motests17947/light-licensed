@@ -50,17 +50,41 @@
 }
 
 .right-sidebar-content {
-  padding: 1rem;
-  width: 240px;
+  padding: 1.5rem;
+  width: 300px;
 }
 
 .right-sidebar-content h3 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   color: #333;
   font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .right-sidebar-content p {
-  color: #666;
+  color: #999;
   font-size: 0.9rem;
+}
+
+.sidebar-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  span {
+    color: #333;
+    font-size: 0.95rem;
+  }
 }

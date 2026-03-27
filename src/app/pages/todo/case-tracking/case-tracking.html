@@ -15,7 +15,7 @@
         <td>{{ user.date }}</td>
         <td class="cub-column-amount">{{ user.amount | number: "1.0-0" }}</td>
         <td class="cub-column-actions">
-          <button cub-button type="button" appearance="text">編輯</button>
+          <button cub-button type="button" appearance="text" (click)="onEdit(user)">編輯</button>
         </td>
       </tr>
     </ng-template>

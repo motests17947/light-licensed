@@ -1,0 +1,82 @@
+<div class="tab-content">
+  <!-- Filter Panel -->
+  <div class="filter-panel">
+    <div class="filter-fields">
+      <div class="filter-field">
+        <label class="filter-label">選擇連線類型</label>
+        <select class="filter-select" [(ngModel)]="selectedType">
+          <option value="" disabled>請選擇類型</option>
+          @for (type of connectionTypes; track type) {
+            <option [value]="type">{{ type }}</option>
+          }
+        </select>
+      </div>
+      <div class="filter-field">
+        <label class="filter-label">狀態</label>
+        <select class="filter-select" [(ngModel)]="selectedStatus">
+          <option value="" disabled selected>請選擇狀態</option>
+          @for (status of statusOptions; track status) {
+            <option [value]="status">{{ status }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="filter-actions">
+      <button class="btn-clear" (click)="clear()">清除</button>
+      <button class="btn-search" (click)="search()">查詢</button>
+    </div>
+  </div>
+
+  <!-- Results Table -->
+  @if (results.length > 0) {
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>連線編號</th>
+            <th>連線名稱</th>
+            <th>最後修改者</th>
+            <th>上次修改時間</th>
+            <th>狀態</th>
+            <th>動作</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of results; track item.connectionId + item.lastModifiedTime) {
+            <tr>
+              <td>{{ item.connectionId }}</td>
+              <td>{{ item.connectionName }}</td>
+              <td>{{ item.lastModifier }}</td>
+              <td>{{ item.lastModifiedTime }}</td>
+              <td>
+                <span class="status-tag status-approved">{{ item.status }}</span>
+              </td>
+              <td>
+                <button class="btn-view" (click)="onView(item)">查看</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination-bar">
+        <button class="page-btn" (click)="prevPage()" [disabled]="currentPage <= 1">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10.4804 14.1869C10.6757 13.9917 10.6757 13.6751 10.4804 13.4798L4.83398 7.83337L10.4804 2.18693C10.6757 1.99167 10.6757 1.67508 10.4804 1.47982C10.2852 1.28456 9.96856 1.28456 9.7733 1.47982L3.7733 7.47982C3.57804 7.67508 3.57804 7.99167 3.7733 8.18693L9.7733 14.1869C9.96856 14.3822 10.2852 14.3822 10.4804 14.1869Z" fill="#999999"/>
+          </svg>
+        </button>
+        <div class="page-info">
+          <span class="page-current">{{ currentPage }}</span>
+          <span class="page-sep">/</span>
+          <span class="page-total">{{ totalPages }}</span>
+        </div>
+        <button class="page-btn" (click)="nextPage()" [disabled]="currentPage >= totalPages">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M5.51957 1.47982C5.32431 1.67508 5.32431 1.99167 5.51957 2.18693L11.1660 7.83337L5.51957 13.4798C5.32431 13.6751 5.32431 13.9917 5.51957 14.1869C5.71483 14.3822 6.03142 14.3822 6.22668 14.1869L12.2267 8.18693C12.4219 7.99167 12.4219 7.67508 12.2267 7.47982L6.22668 1.47982C6.03142 1.28456 5.71483 1.28456 5.51957 1.47982Z" fill="#1D1D1B"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  }
+</div>

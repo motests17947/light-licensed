@@ -68,11 +68,10 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   }
 
   leftToggle(opened?: boolean): void {
-    console.log('toggle')
     if (opened === undefined) {
-      this.leftOpened = !this.leftOpened;
+      this.sidebar_open = !this.sidebar_open;
     } else {
-      this.leftOpened = opened;
+      this.sidebar_open = opened;
     }
   }
 

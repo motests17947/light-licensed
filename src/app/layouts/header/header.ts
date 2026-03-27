@@ -18,11 +18,10 @@ import { CubIconButton } from 'cub-lib-view-rootng';
 })
 export class HeaderComponent {
 
-  leftOpened: boolean = false;
-
+  @Output() toggleLeftSidebar = new EventEmitter<void>();
   @Output() toggleRightSidebar = new EventEmitter<void>();
 
-  leftToggle(): void {
-    this.toggleRightSidebar.emit();
+  toggleSidebar(): void {
+    this.toggleLeftSidebar.emit();
   }
 }

@@ -34,6 +34,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   sidebar_open: boolean = false;
   rightSidebarOpen: boolean = false;
   selectedItem: any = null;
+  expandedConnection: number = 0;
   private destroy$ = new Subject<void>();
 
   constructor(private sidebarService: SidebarService) { }
@@ -81,6 +82,10 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     } else {
       this.rightSidebarOpen = opened;
     }
+  }
+
+  toggleConnection(index: number): void {
+    this.expandedConnection = this.expandedConnection === index ? -1 : index;
   }
 
 }

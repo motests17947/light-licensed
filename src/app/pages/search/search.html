@@ -1,13 +1,15 @@
-<div class="todos-page">
-  <h2>連線查詢</h2>
-  <div class="todos-list">
-    <cub-tab-group>
-      <cub-tab label="全部">
-        全部
-      </cub-tab>
-      <cub-tab label="生效中">
-        生效中
-      </cub-tab>
-    </cub-tab-group>
+<div class="search-page">
+  <div class="page-header">
+    <span class="page-title-bar"></span>
+    <h2 class="page-title">連線查詢</h2>
   </div>
+
+  <cub-tab-group class="search-tab-group">
+    <cub-tab label="全部">
+      <app-search-all />
+    </cub-tab>
+    <cub-tab label="生效中">
+      <app-search-active />
+    </cub-tab>
+  </cub-tab-group>
 </div>

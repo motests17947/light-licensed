@@ -1,1 +1,125 @@
-<h1>app-todo-list</h1>
+<div class="todo-list-container">
+  <!-- Filled sub-tabs -->
+  <div class="sub-tabs-bar">
+    @for (tab of subTabs; track tab) {
+      <button
+        class="sub-tab"
+        [class.sub-tab--active]="activeSubTab === tab"
+        (click)="setSubTab(tab)">
+        {{ tab }}
+      </button>
+    }
+  </div>
+
+  <!-- Flat table for 全部, 資訊修改, 單一連線 -->
+  @if (activeSubTab !== '組織連線') {
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>組織名稱</th>
+            <th>連線編號</th>
+            <th>Sever IP</th>
+            <th>Sever Port</th>
+            <th>Client Port</th>
+            <th>狀態</th>
+            <th>POD Name</th>
+            <th>中心</th>
+            <th>動作</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of flatRows; track $index) {
+            <tr>
+              <td>{{ row.orgName }}</td>
+              <td>{{ row.connectionCode }}</td>
+              <td>{{ row.severIp }}</td>
+              <td>{{ row.severPort }}</td>
+              <td>{{ row.clientPort }}</td>
+              <td>
+                <span class="status-badge">{{ row.status }}</span>
+              </td>
+              <td>{{ row.podName }}</td>
+              <td>{{ row.center }}</td>
+              <td>
+                <button class="approve-btn" (click)="onApprove(row)">審批</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  <!-- Expandable grouped table for 組織連線 -->
+  @if (activeSubTab === '組織連線') {
+    <div class="table-wrapper">
+      <table class="data-table org-table">
+        <thead>
+          <tr>
+            <th class="col-expand"></th>
+            <th>組織名稱</th>
+            <th>連線編號</th>
+            <th>Sever IP</th>
+            <th>Sever Port</th>
+            <th>Client Port</th>
+            <th>狀態</th>
+            <th>POD Name</th>
+            <th>中心</th>
+            <th>動作</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (group of orgGroups; track group.orgName) {
+            <!-- Group parent row -->
+            <tr class="group-parent-row">
+              <td class="col-expand">
+                <button class="expand-toggle-btn" (click)="toggleGroup(group)">
+                  @if (group.expanded) {
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M7.99961 18.82L10.7696 16.05C10.8642 15.9576 10.9879 15.9011 11.1196 15.89C11.1891 15.8886 11.2582 15.9021 11.322 15.9297C11.3859 15.9573 11.443 15.9984 11.4896 16.05C11.5369 16.0907 11.5757 16.1403 11.6038 16.196C11.6319 16.2517 11.6488 16.3124 11.6534 16.3746C11.658 16.4369 11.6504 16.4994 11.6309 16.5586C11.6113 16.6179 11.5803 16.6727 11.5396 16.72C11.5196 16.74 11.5096 16.76 11.4896 16.77L8.56961 19.69C8.49285 19.7678 8.40096 19.8291 8.29961 19.87C8.10574 19.94 7.89348 19.94 7.69961 19.87C7.59826 19.8291 7.50637 19.7678 7.42961 19.69L4.50961 16.77C4.41348 16.6781 4.35622 16.5528 4.34961 16.42C4.35094 16.3242 4.37847 16.2305 4.42922 16.1492C4.47997 16.068 4.55201 16.0021 4.63752 15.9588C4.72303 15.9156 4.81875 15.8965 4.91431 15.9038C5.00986 15.911 5.10161 15.9443 5.17961 16C5.19961 16.02 5.21961 16.03 5.22961 16.05L7.99961 18.82Z" fill="#808080"/>
+                    </svg>
+                  } @else {
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M18.8207 8.00002L16.0507 5.23002C15.9584 5.13548 15.9018 5.01173 15.8907 4.88002C15.8893 4.81049 15.9029 4.74145 15.9305 4.67761C15.9581 4.61377 15.9991 4.55662 16.0507 4.51003C16.0914 4.46274 16.1411 4.42394 16.1968 4.39583C16.2525 4.36773 16.3131 4.35087 16.3754 4.34623C16.4376 4.34159 16.5001 4.34925 16.5594 4.36877C16.6186 4.3883 16.6735 4.41931 16.7207 4.46002C16.7407 4.48002 16.7607 4.49003 16.7707 4.51003L19.6907 7.43003C19.7685 7.50678 19.8298 7.59867 19.8707 7.70002C19.9408 7.89389 19.9408 8.10616 19.8707 8.30002C19.8298 8.40138 19.7685 8.49327 19.6907 8.57002L16.7707 11.49C16.6788 11.5862 16.5536 11.6434 16.4207 11.65C16.3249 11.6487 16.2313 11.6212 16.15 11.5704C16.0687 11.5197 16.0028 11.4476 15.9596 11.3621C15.9163 11.2766 15.8973 11.1809 15.9045 11.0853C15.9118 10.9898 15.945 10.898 16.0007 10.82C16.0207 10.8 16.0307 10.78 16.0507 10.77L18.8207 8.00002Z" fill="#808080"/>
+                    </svg>
+                  }
+                </button>
+              </td>
+              <td>{{ group.orgName }}</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>
+                <button class="approve-btn" (click)="onApproveGroup(group)">審批</button>
+              </td>
+            </tr>
+            <!-- Child rows shown when expanded -->
+            @if (group.expanded) {
+              @for (child of group.children; track $index) {
+                <tr class="group-child-row">
+                  <td class="col-expand"></td>
+                  <td>{{ child.orgName }}</td>
+                  <td>{{ child.connectionCode }}</td>
+                  <td>{{ child.severIp }}</td>
+                  <td>{{ child.severPort }}</td>
+                  <td>{{ child.clientPort }}</td>
+                  <td>
+                    <span class="status-badge">{{ child.status }}</span>
+                  </td>
+                  <td>{{ child.podName }}</td>
+                  <td>{{ child.center }}</td>
+                  <td>-</td>
+                </tr>
+              }
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

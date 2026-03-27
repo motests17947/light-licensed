@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CubLayoutContainer, CubLayoutContent, CubSidebarContent, CubLayoutPanel } from 'cub-lib-view-rootng/component/layout';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -12,6 +13,7 @@ import { takeUntil } from 'rxjs/operators';
   selector: 'app-main-layout',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,

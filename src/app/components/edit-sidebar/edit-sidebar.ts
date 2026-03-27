@@ -1,10 +1,20 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CubButton, CubButtonModule } from 'cub-lib-view-rootng/component/button';
+import { CubStepper, CubStep, CubStepperModule } from 'cub-lib-view-rootng/component/stepper';
 
 @Component({
   selector: 'app-edit-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    CubButtonModule,
+    CubStepperModule,
+    CubButton,
+    CubStepper,
+    CubStep
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './edit-sidebar.html',
   styleUrl: './edit-sidebar.scss'
 })

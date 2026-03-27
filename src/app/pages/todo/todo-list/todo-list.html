@@ -42,7 +42,7 @@
               <td>{{ row.podName }}</td>
               <td>{{ row.center }}</td>
               <td>
-                <button class="approve-btn">審批</button>
+                <button class="approve-btn" (click)="onApprove(row)">審批</button>
               </td>
             </tr>
           }
@@ -95,7 +95,7 @@
               <td>-</td>
               <td>-</td>
               <td>
-                <button class="approve-btn">審批</button>
+                <button class="approve-btn" (click)="onApproveGroup(group)">審批</button>
               </td>
             </tr>
             <!-- Child rows shown when expanded -->

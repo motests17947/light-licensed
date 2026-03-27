@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SidebarService } from '../../../services/sidebar.service';
 
 type SubTab = '全部' | '資訊修改' | '單一連線' | '組織連線';
 
@@ -39,6 +40,7 @@ interface OrgGroup {
   styleUrl: './todo-list.scss'
 })
 export class AppTodoListComponent {
+  constructor(private sidebarService: SidebarService) {}
   activeSubTab: SubTab = '全部';
   subTabs: SubTab[] = ['全部', '資訊修改', '單一連線', '組織連線'];
 
@@ -74,5 +76,13 @@ export class AppTodoListComponent {
 
   toggleGroup(group: OrgGroup): void {
     group.expanded = !group.expanded;
+  }
+
+  onApprove(row: FlatRow): void {
+    this.sidebarService.openRightSidebar(row);
+  }
+
+  onApproveGroup(group: OrgGroup): void {
+    this.sidebarService.openRightSidebar(group);
   }
 }

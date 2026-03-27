@@ -90,7 +90,7 @@
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: flex-end;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .sidebar-container {
@@ -99,6 +99,7 @@
   height: 100%;
   animation: slideInRight 0.3s ease-in-out;
   margin-left: auto;
+  background: #fff;
 }
 
 @keyframes slideInRight {

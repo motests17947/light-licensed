@@ -43,6 +43,28 @@
   font-weight: 500;
 }
 
+/* Right sidebar panel z-index and background fix */
+::ng-deep cub-layout-panel[position="end"] {
+  z-index: 9999 !important;
+}
+
+::ng-deep cub-layout-panel[position="end"] cub-sidebar-content {
+  background: #fff !important;
+  z-index: 9999 !important;
+}
+
+::ng-deep .cub-layout-panel[position="end"] {
+  z-index: 9999 !important;
+}
+
+::ng-deep .cub-layout-panel[position="end"] .cub-sidebar-content {
+  background: #fff !important;
+}
+
+::ng-deep .cub-layout-backdrop.cub-layout-visible {
+  z-index: 9998 !important;
+}
+
 .content-area {
   flex: 1;
   padding: 2rem;

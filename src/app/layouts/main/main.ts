@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CubLayoutContainer, CubLayoutContent, CubSidebarContent, CubLayoutPanel } from 'cub-lib-view-rootng/component/layout';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from "../header/header";
 import { FooterComponent } from '../footer/footer';
+import { EditSidebarComponent } from '../../components/edit-sidebar/edit-sidebar';
+import { SidebarService } from '../../services/sidebar.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
@@ -17,26 +23,44 @@ import { FooterComponent } from '../footer/footer';
     CubSidebarContent,
     CubLayoutPanel,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditSidebarComponent
 ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './main.html',
   styleUrl: './main.scss'
 })
-export class MainLayoutComponent {
+export class MainLayoutComponent implements OnInit, OnDestroy {
 
   leftOpened: boolean = false;
   sidebar_open: boolean = false;
+  rightSidebarOpen: boolean = false;
+  selectedItem: any = null;
+  private destroy$ = new Subject<void>();
 
-  constructor() { }
+  constructor(private sidebarService: SidebarService) { }
 
   ngOnInit(): void {
     this.updateSidebarOpen();
     window.addEventListener('resize', this.updateSidebarOpen.bind(this));
+
+    this.sidebarService.rightSidebarOpen$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isOpen => {
+        this.rightSidebarOpen = isOpen;
+      });
+
+    this.sidebarService.selectedItem$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(item => {
+        this.selectedItem = item;
+      });
   }
 
   ngOnDestroy(): void {
     window.removeEventListener('resize', this.updateSidebarOpen.bind(this));
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   updateSidebarOpen(): void {
@@ -45,13 +69,23 @@ export class MainLayoutComponent {
   }
 
   leftToggle(opened?: boolean): void {
-    console.log('toggle')
     if (opened === undefined) {
-      this.leftOpened = !this.leftOpened;
+      this.sidebar_open = !this.sidebar_open;
     } else {
-      this.leftOpened = opened;
+      this.sidebar_open = opened;
     }
   }
 
+  rightToggle(opened?: boolean): void {
+    if (opened === undefined) {
+      this.rightSidebarOpen = !this.rightSidebarOpen;
+    } else {
+      this.rightSidebarOpen = opened;
+    }
+  }
+
+  onEditSubmit(): void {
+    console.log('編輯開關已送出');
+  }
 
 }

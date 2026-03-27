@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CubHeader } from 'cub-lib-view-rootng/component/layout';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CubButton, CubButtonModule } from 'cub-lib-view-rootng/component/button';
 import { CubIconButton } from 'cub-lib-view-rootng';
 
 @Component({
@@ -9,7 +8,8 @@ import { CubIconButton } from 'cub-lib-view-rootng';
   standalone: true,
   imports: [
     RouterLink,
-    CubHeader,
+    CubButtonModule,
+    CubButton,
     CubIconButton
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -18,9 +18,10 @@ import { CubIconButton } from 'cub-lib-view-rootng';
 })
 export class HeaderComponent {
 
-  leftOpened: boolean = false;
+  @Output() toggleLeftSidebar = new EventEmitter<void>();
+  @Output() toggleRightSidebar = new EventEmitter<void>();
 
-  leftToggle(): void {
-    console.log('toggle header');
+  toggleSidebar(): void {
+    this.toggleLeftSidebar.emit();
   }
 }

@@ -1,0 +1,111 @@
+.switch-page {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 36px;
+  flex: 1;
+  background: var(--bg-neutral-light, #F5F5F5);
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.page-title {
+  color: var(--text-neutral-main, #3D3D3D);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: var(--font-size-8, 28px);
+  font-weight: 700;
+  line-height: var(--font-line-height-8, 36px);
+}
+
+.tab-content {
+  padding-top: 24px;
+}
+
+// Filter card
+.filter-card {
+  border-radius: var(--radius-xl, 8px);
+  background: var(--bg-neutral-base, #FFF);
+}
+
+.filter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 29px;
+  align-self: stretch;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.filter-label {
+  color: var(--label-text-neutral, #666);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: var(--font-size-2, 14px);
+  font-weight: 400;
+  line-height: var(--font-line-height-2, 22px);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+// Org table
+.org-table-wrapper {
+  padding-top: 16px;
+}
+
+// Connection status tag
+.status-tag {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: var(--font-size-3, 16px);
+  font-weight: 400;
+
+  &.status-green {
+    color: var(--tag-text-green, #00733B);
+  }
+}
+
+// Sidebar overlay
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.sidebar-container {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  animation: slideInRight 0.3s ease-in-out;
+  margin-left: auto;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

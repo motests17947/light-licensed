@@ -1,5 +1,5 @@
 <cub-layout-container>
-  <app-header cubLayoutHeader />
+  <app-header cubLayoutHeader (toggleLeftSidebar)="leftToggle()" (toggleRightSidebar)="rightToggle()" />
 
   <cub-layout-panel
     cubLayoutPanel
@@ -24,6 +24,19 @@
   <cub-layout-content>
     <router-outlet />
   </cub-layout-content>
+
+  <cub-layout-panel
+    cubLayoutPanel
+    position="end"
+    [autoFocus]="false"
+    [opened]="rightSidebarOpen"
+    (openedChange)="rightToggle($event)"
+    [mode]="'over'"
+  >
+    <cub-sidebar-content>
+      <app-edit-sidebar (closeSidebar)="rightToggle(false)" (submit)="onEditSubmit()"></app-edit-sidebar>
+    </cub-sidebar-content>
+  </cub-layout-panel>
 
   <app-footer cubLayoutFooter></app-footer>
 </cub-layout-container>

@@ -1,7 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CubHeader } from 'cub-lib-view-rootng/component/layout';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CubButton, CubButtonModule } from 'cub-lib-view-rootng/component/button';
 import { CubIconButton } from 'cub-lib-view-rootng';
 
 @Component({
@@ -9,7 +8,8 @@ import { CubIconButton } from 'cub-lib-view-rootng';
   standalone: true,
   imports: [
     RouterLink,
-    CubHeader,
+    CubButtonModule,
+    CubButton,
     CubIconButton
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

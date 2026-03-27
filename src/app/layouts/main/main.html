@@ -25,5 +25,21 @@
     <router-outlet />
   </cub-layout-content>
 
+  <cub-layout-panel
+    cubLayoutPanel
+    position="end"
+    [autoFocus]="false"
+    [opened]="rightSidebarOpen"
+    (openedChange)="rightToggle($event)"
+    [mode]="'side'"
+  >
+    <cub-sidebar-content>
+      <div class="right-sidebar-content">
+        <h3>右側面板</h3>
+        <p>這是右側 Sidebar 內容</p>
+      </div>
+    </cub-sidebar-content>
+  </cub-layout-panel>
+
   <app-footer cubLayoutFooter></app-footer>
 </cub-layout-container>

@@ -27,6 +27,7 @@ export class MainLayoutComponent {
 
   leftOpened: boolean = false;
   sidebar_open: boolean = false;
+  rightSidebarOpen: boolean = false;
 
   constructor() { }
 
@@ -53,5 +54,12 @@ export class MainLayoutComponent {
     }
   }
 
+  rightToggle(opened?: boolean): void {
+    if (opened === undefined) {
+      this.rightSidebarOpen = !this.rightSidebarOpen;
+    } else {
+      this.rightSidebarOpen = opened;
+    }
+  }
 
 }

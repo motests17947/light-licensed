@@ -119,3 +119,12 @@
   </cub-tab-group>
 
 </div>
+
+<!-- Sidebar overlay -->
+@if (sidebarVisible) {
+  <div class="sidebar-overlay" (click)="onCloseSidebar()">
+    <div class="sidebar-container" (click)="$event.stopPropagation()">
+      <app-edit-sidebar (closeSidebar)="onCloseSidebar()" (submit)="onSubmitSidebar()"></app-edit-sidebar>
+    </div>
+  </div>
+}

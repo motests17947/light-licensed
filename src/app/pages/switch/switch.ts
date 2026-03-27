@@ -9,6 +9,7 @@ import { CubCheckbox, CubCheckboxModule } from 'cub-lib-view-rootng/component/ch
 import { CubButton, CubButtonModule } from 'cub-lib-view-rootng/component/button';
 import { CubTable, CubTableModule } from 'cub-lib-view-rootng';
 import { CubTemplate } from 'cub-lib-view-rootng';
+import { EditSidebarComponent } from '../../components/edit-sidebar/edit-sidebar';
 
 @Component({
   selector: 'app-switch',
@@ -32,6 +33,7 @@ import { CubTemplate } from 'cub-lib-view-rootng';
     CubTable,
     CubTableModule,
     CubTemplate,
+    EditSidebarComponent,
   ],
   templateUrl: './switch.html',
   styleUrl: './switch.scss'
@@ -40,6 +42,7 @@ export class AppSwitchPageComponent {
 
   activeTabIndex = 0;
   activeOrgTabIndex = 0;
+  sidebarVisible = false;
 
   selectedConnectionType = 'nccc';
   selectedCenter = '内湖';
@@ -93,5 +96,15 @@ export class AppSwitchPageComponent {
 
   onView(row: any): void {
     console.log('查看', row);
+    this.sidebarVisible = true;
+  }
+
+  onCloseSidebar(): void {
+    this.sidebarVisible = false;
+  }
+
+  onSubmitSidebar(): void {
+    console.log('提交編輯');
+    this.sidebarVisible = false;
   }
 }

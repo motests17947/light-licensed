@@ -11,7 +11,7 @@ module.exports = {
   },
   transformIgnorePatterns: [
     // 讓 Angular、rxjs 和相關套件也能被 jest-preset-angular 轉譯
-    'node_modules/(?!(@angular|@ngx-translate|rxjs|cub-lib-view-rootng|cub-lib-view-iconfont|@angular-architects)/)',
+    'node_modules/(?!(@angular|@ngx-translate|rxjs|cub-lib-view-rootng|cub-lib-view-iconfont|cub-lib-view-utilities|primeng|@primeuix|@angular-architects)/)',
   ],
   moduleNameMapper: {
     // 忽略樣式檔匯入

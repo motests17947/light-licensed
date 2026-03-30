@@ -78,6 +78,320 @@ jest.mock('cub-lib-view-rootng', () => {
   };
 }, { virtual: true });
 
+// Mock cub-lib-view-rootng/component/tab 子模塊 - 用於 Tab 相關的功能
+jest.mock('cub-lib-view-rootng/component/tab', () => {
+  const createMockModule = (name: string) => {
+    class MockModule {
+      static ɵmod = {
+        type: MockModule,
+        bootstrap: [],
+        declarations: [],
+        imports: [],
+        exports: [],
+        providers: [],
+        id: null,
+        schemas: [],
+        transitiveCompileScopes: null
+      };
+      static ɵinj = {
+        providers: [],
+        factory: () => new MockModule()
+      };
+    }
+    Object.defineProperty(MockModule, 'name', { value: name });
+    return MockModule;
+  };
+
+  class CubTab {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-tab']],
+      factory: () => new CubTab(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubTab();
+  }
+
+  class CubTabGroup {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-tab-group']],
+      factory: () => new CubTabGroup(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubTabGroup();
+  }
+
+  class CubTabNavBar {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-tab-nav-bar']],
+      factory: () => new CubTabNavBar(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubTabNavBar();
+  }
+
+  return {
+    CubTabModule: createMockModule('CubTabModule'),
+    CubTab,
+    CubTabGroup,
+    CubTabNavBar,
+  };
+}, { virtual: true });
+
+// Mock cub-lib-view-rootng/component/button 子模塊
+jest.mock('cub-lib-view-rootng/component/button', () => {
+  const createMockModule = (name: string) => {
+    class MockModule {
+      static ɵmod = {
+        type: MockModule,
+        bootstrap: [],
+        declarations: [],
+        imports: [],
+        exports: [],
+        providers: [],
+        id: null,
+        schemas: [],
+        transitiveCompileScopes: null
+      };
+      static ɵinj = {
+        providers: [],
+        factory: () => new MockModule()
+      };
+    }
+    Object.defineProperty(MockModule, 'name', { value: name });
+    return MockModule;
+  };
+
+  class CubButton {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-button']],
+      factory: () => new CubButton(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubButton();
+  }
+
+  class CubIconButton {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-icon-button']],
+      factory: () => new CubIconButton(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubIconButton();
+  }
+
+  return {
+    CubButtonModule: createMockModule('CubButtonModule'),
+    CubButton,
+    CubIconButton,
+  };
+}, { virtual: true });
+
+// Mock cub-lib-view-rootng/component/stepper 子模塊
+jest.mock('cub-lib-view-rootng/component/stepper', () => {
+  const createMockModule = (name: string) => {
+    class MockModule {
+      static ɵmod = {
+        type: MockModule,
+        bootstrap: [],
+        declarations: [],
+        imports: [],
+        exports: [],
+        providers: [],
+        id: null,
+        schemas: [],
+        transitiveCompileScopes: null
+      };
+      static ɵinj = {
+        providers: [],
+        factory: () => new MockModule()
+      };
+    }
+    Object.defineProperty(MockModule, 'name', { value: name });
+    return MockModule;
+  };
+
+  class CubStepper {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-stepper']],
+      factory: () => new CubStepper(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubStepper();
+  }
+
+  class CubStep {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-step']],
+      factory: () => new CubStep(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubStep();
+  }
+
+  return {
+    CubStepperModule: createMockModule('CubStepperModule'),
+    CubStepper,
+    CubStep,
+  };
+}, { virtual: true });
+
+// Mock cub-lib-view-rootng/component/layout 子模塊
+jest.mock('cub-lib-view-rootng/component/layout', () => {
+  const createMockModule = (name: string) => {
+    class MockModule {
+      static ɵmod = {
+        type: MockModule,
+        bootstrap: [],
+        declarations: [],
+        imports: [],
+        exports: [],
+        providers: [],
+        id: null,
+        schemas: [],
+        transitiveCompileScopes: null
+      };
+      static ɵinj = {
+        providers: [],
+        factory: () => new MockModule()
+      };
+    }
+    Object.defineProperty(MockModule, 'name', { value: name });
+    return MockModule;
+  };
+
+  class CubLayoutContainer {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-layout-container']],
+      factory: () => new CubLayoutContainer(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubLayoutContainer();
+  }
+
+  class CubLayoutContent {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-layout-content']],
+      factory: () => new CubLayoutContent(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubLayoutContent();
+  }
+
+  class CubSidebarContent {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-sidebar-content']],
+      factory: () => new CubSidebarContent(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubSidebarContent();
+  }
+
+  class CubLayoutPanel {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-layout-panel']],
+      factory: () => new CubLayoutPanel(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubLayoutPanel();
+  }
+
+  class CubFooter {
+    static ɵcmp = {
+      type: 'Component',
+      selectors: [['cub-footer']],
+      factory: () => new CubFooter(),
+      template: '<ng-content></ng-content>',
+      styles: []
+    };
+    static ɵfac = () => new CubFooter();
+  }
+
+  return {
+    CubLayoutContainer,
+    CubLayoutContent,
+    CubSidebarContent,
+    CubLayoutPanel,
+    CubFooter,
+  };
+}, { virtual: true });
+
+// Mock primeng/overlay 和 primeng/tooltip
+jest.mock('primeng/overlay', () => {
+  const createMockModule = (name: string) => {
+    class MockModule {
+      static ɵmod = {
+        type: MockModule,
+        bootstrap: [],
+        declarations: [],
+        imports: [],
+        exports: [],
+        providers: [],
+        id: null,
+        schemas: [],
+        transitiveCompileScopes: null
+      };
+      static ɵinj = {
+        providers: [],
+        factory: () => new MockModule()
+      };
+    }
+    Object.defineProperty(MockModule, 'name', { value: name });
+    return MockModule;
+  };
+  return {
+    OverlayModule: createMockModule('OverlayModule'),
+  };
+}, { virtual: true });
+
+jest.mock('primeng/tooltip', () => {
+  const createMockModule = (name: string) => {
+    class MockModule {
+      static ɵmod = {
+        type: MockModule,
+        bootstrap: [],
+        declarations: [],
+        imports: [],
+        exports: [],
+        providers: [],
+        id: null,
+        schemas: [],
+        transitiveCompileScopes: null
+      };
+      static ɵinj = {
+        providers: [],
+        factory: () => new MockModule()
+      };
+    }
+    Object.defineProperty(MockModule, 'name', { value: name });
+    return MockModule;
+  };
+  return {
+    TooltipModule: createMockModule('TooltipModule'),
+  };
+}, { virtual: true });
+
 // Mock cub-lib-view-rootng/cdk 子模塊 - 用於 Portal、CDK 相關的功能
 jest.mock('cub-lib-view-rootng/cdk', () => {
   // 建立 Mock Portal 和相關服務
